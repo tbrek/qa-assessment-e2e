@@ -1,0 +1,11 @@
+{
+  "baseUrl": "https://quote.test.bymiles.co.uk",
+  "video": false,
+  "testFiles": "**/*.feature",
+  "chromeWebSecurity": false,
+  "watchForFileChanges": false,
+  "projectId": "wxy23f",
+  "viewportWidth": 1200,
+  "viewportHeight": 1200
+
+}

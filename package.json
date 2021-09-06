@@ -1,0 +1,24 @@
+{
+  "name": "bymiles-quoteflow",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/v2",
+    "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:sanity": "./node_modules/.bin/cypress-tags run -e TAGS='@sanity'",
+    "cypress:run:local": "CYPRESS_BASE_URL=http://localhost:15012 cypress run",
+    "cypress:run": "cypress run"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false
+  },
+  "devDependencies": {
+    "cypress": "^6.5.0",
+    "cypress-cucumber-preprocessor": "^2.0.1"
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint src --fix"
+    ]
+  }
+}
