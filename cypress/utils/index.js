@@ -1,3 +1,1 @@
-module.exports = {
-  generateEmailAddress: require('./generateEmailAddress'),
-}
+// Utils go here
