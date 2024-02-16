@@ -8,6 +8,7 @@ Feature: Quick quote happy flow
     And The user can see the Registration Field is visible
     Then The user enters a registration into Registration Field "GM15ZNY"
     Then The user clicks Find My Car button
+    #User is now on Car section
     Then The user can see the Car Details within Car Info Container
     And The user selects an option within Car Modification Toggle "yes"
     And The user selects checks the Not Listed Above check box
@@ -15,8 +16,16 @@ Feature: Quick quote happy flow
     And The user selects an option within Legal Owner of this car dropdown "Other"
     And The user selects an option within Registered Keeper of Car dropdown "Other"
     And The user selects an option within Home Overnight Toggle "yes"
-    #Confider adding RandomValue here
+    #Consider adding RandomValue here
     Then The user enters mileage into Estimated Mileage Field "31600"
     Then The user clicks Continue / Driver button
+    #User is now on Driver section
+    Then The user selects an option within Title dropdown "Dr"
+    #Consider adding RandomValue here
+    And The user enters a first name into first name field "John"
+    And The user enters a last name into last name field "Matrix"
+    Then The user enters a DOB into DOB name field "01" "01" "1989"
+    And The user selects an option within Lived Continuously in UK toggle "yes"
+    And The user selects an option within children dropdown "0"
 
    

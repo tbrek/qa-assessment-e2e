@@ -1,7 +1,9 @@
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import QuickQuotePage from '../pages/quickQuotePage'
+import QuickQuotePageDriver from '../pages/quickQuotePageDriver'
 
 let quickQuotePage = new QuickQuotePage()
+let quickQuotePageDriver = new QuickQuotePageDriver()
 
 // Given steps
 
@@ -22,7 +24,7 @@ Then('The user clicks Find My Car button', () =>{
   quickQuotePage.clickFindCarButton()
 })
 
-//2nd Section of Quick Quote Steps
+//2nd Section of Quick Quote Steps - Car
 Then('The user can see the Car Details within Car Info Container', () => {
   quickQuotePage.verifyCarInfoContainer()
 })
@@ -63,13 +65,28 @@ Then('The user clicks Continue / Driver button', () => {
   quickQuotePage.clickContinueDriverButton()
 })
 
+//3rd Section of Quick Quote Steps - Driver
+Then('The user selects an option within Title dropdown {string}', (option) => {
+  quickQuotePageDriver.selectTitleDropdown(option)
+})
 
-//Added the following to a custom command within visitQuickQuotePage()
-// And('If the cookie modal appears click Allow all', () => {
-//   cy.clickAcceptAllCookies()
-// })
+And('The user enters a first name into first name field {string}', (firstName) => {
+  quickQuotePageDriver.typeFirstNameTextField(firstName)
+})
 
-// When steps
+And('The user enters a last name into last name field {string}', (lastName) => {
+  quickQuotePageDriver.typeLastNameTextField(lastName)
+})
 
-// Then steps
+Then('The user enters a DOB into DOB name field {string} {string} {string}', (day, month, year) => {
+  quickQuotePageDriver.enterDOBintoDOBField(day, month, year)
+})
+
+Then('The user selects an option within Lived Continuously in UK toggle {string}', (option) => {
+  quickQuotePageDriver.selectLivedUKContinuouslyToggle(option)
+})
+
+Then('The user selects an option within children dropdown {string}', (option) => {
+  quickQuotePageDriver.selectChildrenDropdown(option)
+})
 
