@@ -15,6 +15,8 @@ Feature: Quick quote happy flow
     And The user enters a DOB into DOB name field "01" "01" "1989"
     And The user enters a Postcode within Postcode Field "CF14 2LW"
     And The user enters a Renewal Month within Car Insurance Renewal Dropdown "June"
+    #Look to add randomValue here
+    And The user enters a Random Email Address within Email Address Field
 
     # #User is now on Car section
     # Then The user can see the Car Details within Car Info Container

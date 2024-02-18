@@ -1,6 +1,7 @@
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import QuickQuotePage from '../pages/quickQuotePage'
 import QuickQuotePageDriver from '../pages/quickQuotePageDriver'
+import { generateRandomValue, generateAlphabeticalRandomValue, generateNumericalRandomValue } from '../randomValue'
 
 let quickQuotePage = new QuickQuotePage()
 let quickQuotePageDriver = new QuickQuotePageDriver()
@@ -49,6 +50,14 @@ Then('The user enters a Postcode within Postcode Field {string}', (postcode) => 
 
 Then('The user enters a Renewal Month within Car Insurance Renewal Dropdown {string}', (renewalMonth) => {
   quickQuotePageDriver.selectCarInsuranceRenewDropdown(renewalMonth)
+})
+
+Then('The user enters an Email Address within Email Address Field {string}', (emailAddress) => {
+  quickQuotePageDriver.typeEmailAddressField(emailAddress)
+})
+
+Then('The user enters a Random Email Address within Email Address Field', () => {
+  quickQuotePageDriver.typeRandomEmailAddressField()
 })
 
 //2nd Section of Quick Quote Steps - Car

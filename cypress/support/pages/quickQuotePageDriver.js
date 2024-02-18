@@ -1,6 +1,6 @@
 const URL = '/'
 
-
+import { generateRandomValue, generateAlphabeticalRandomValue, generateNumericalRandomValue } from '../randomValue'
 class QuickQuotePageDriver {
 
   //Selectors
@@ -56,6 +56,17 @@ class QuickQuotePageDriver {
     cy.get(QuickQuotePageDriver.dropdownOptions).contains(option).click()
   }
 
+  typeEmailAddressField(emailAddress) {
+    cy.get(QuickQuotePageDriver.emailAddressField).type(emailAddress)
+    cy.get(QuickQuotePageDriver.emailAddressField).should('have.value', emailAddress)
+  }
+
+  typeRandomEmailAddressField() {
+    const randomValue = generateAlphabeticalRandomValue(10)
+    const randomEmailAddress = `QATest${randomValue}@qatest.com`
+
+    cy.get(QuickQuotePageDriver.emailAddressField).type(randomEmailAddress)
+  }
 
   selectTitleDropdown(option) {
     cy.get(QuickQuotePageDriver.titleDropdown).click({force:true})
