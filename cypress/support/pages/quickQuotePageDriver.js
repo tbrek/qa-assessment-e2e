@@ -4,17 +4,59 @@ const URL = '/'
 class QuickQuotePageDriver {
 
   //Selectors
+  static quickQuoteFormWrapper = '#quick-quote-form'
   static titleDropdown = '[data-cy="title-dropdown-list"]' //Consider better selector in future
   static dropdownOptions = '[id^="react-select-"]' //I've used partial selector
+  static ncdDropdown = '[datacy="react-select-ncd--list"]'
   static firstNameTextField = '[id="first-name"]'
   static lastNameTextField = '[name="family-name"]'
   static dayDOBField = '[id="day"]'
   static monthDOBField = '[id="month"]'
   static yearDOBField = '[id="year"]'
+  static postcodeField = '[id="postcode"]'
+  static postcodeValue = '[datacy="postcode-input"]'
+  static carInsuranceRenewDropdown = '[datacy="react-select-month--list"]'
+  static emailAddressField = '[id="email"]'
+  static carIcon = '.car'
+  static parkingIcon = '.parking'
+  static getAQuickQuoteButton = '[class^="button button--primary button--quick-quote"]' //I've used partial selector
   static livedUKContinuouslyToggle = (option) => `[id="input-uk-born-toggle-${option}"]`
   static childrenDropdown = '[data-cy^="children-under-16-dropdown-list"] > .select-component'
 
   //Actions
+
+  verifyQuickQuoteFormWrapperFields() {
+    cy.get(QuickQuotePageDriver.quickQuoteFormWrapper)
+    .within(() => {
+    cy.get(QuickQuotePageDriver.ncdDropdown).should('be.visible')
+    cy.get(QuickQuotePageDriver.dayDOBField).should('be.visible')
+    cy.get(QuickQuotePageDriver.monthDOBField).should('be.visible')
+    cy.get(QuickQuotePageDriver.yearDOBField).should('be.visible')
+    cy.get(QuickQuotePageDriver.postcodeField).should('be.visible')
+    cy.get(QuickQuotePageDriver.carInsuranceRenewDropdown).should('be.visible')
+    cy.get(QuickQuotePageDriver.emailAddressField).should('be.visible')
+    cy.get(QuickQuotePageDriver.carIcon).should('be.visible')
+    cy.get(QuickQuotePageDriver.parkingIcon).should('be.visible')
+    cy.get(QuickQuotePageDriver.getAQuickQuoteButton).should('be.visible').should('be.disabled')
+    })
+  }
+
+  selectOptionNoClaimsDiscountDropdown(option) {
+    cy.get(QuickQuotePageDriver.ncdDropdown).click()
+    cy.get(QuickQuotePageDriver.dropdownOptions).contains(option).click()
+  }
+
+  typePostcodeField(postcode) {
+    cy.get(QuickQuotePageDriver.postcodeField).type(postcode)
+    cy.get(QuickQuotePageDriver.postcodeValue).should('have.value', postcode)
+  }
+
+  selectCarInsuranceRenewDropdown(option) {
+    cy.get(QuickQuotePageDriver.carInsuranceRenewDropdown).click()
+    cy.get(QuickQuotePageDriver.dropdownOptions).contains(option).click()
+  }
+
+
   selectTitleDropdown(option) {
     cy.get(QuickQuotePageDriver.titleDropdown).click({force:true})
     //cy.get(QuickQuotePageDriver.dropdownOptions).contains(option).click()

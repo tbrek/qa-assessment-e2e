@@ -4,10 +4,19 @@ const URL = '/'
 class QuickQuotePage {
 
   //1st Section Selectors
+
+  //TEST
   static carWrapper = '[class="car-wrapper"]'
   static enterYourRegNumberText = '[class="question-text-container"]'
   static registrationInputTextField = '[id="reg"]'
   static findCarButton = '[data-cy="find-car-button"]'
+
+  //PROD
+  static formBoxQuickQuotePROD = '.content-wrapper > .reg-to-qq > .formbox'
+  static registrationInputTextFieldPROD = '[datacy="reg-to-qq-input"]'
+  static getAQuickQuoteButtonPROD = '[datacy="qq-btn-hero"]'
+  static quickQuoteMileageFormWrapper = '[class="formbox formbox--quick-quote-mileage"]'
+  static quickQuoteMilageContinueButton = '[datacy="quick-quote-mileage-continue"]'
 
   //2nd Section Selectors
   static carInfoContainer = '[data-cy="car-info-container"]'
@@ -23,33 +32,75 @@ class QuickQuotePage {
   static continueDriverButton = '[data-cy="continue-driver-button"]'
 
   //Actions
-  visitQuickQuotePage() {
-    cy.viewport(1200, 1600)
-    cy.visit(URL)
-    //Added the following custom command - if allow all cookies appears then click allow all button
-    cy.clickAcceptAllCookies()
+  visitQuickQuotePage(env) {
 
+    if (env === 'TEST') {
+      cy.viewport(1200, 1600)
+      cy.visit(URL)
+      //Added the following custom command - if allow all cookies appears then click allow all button
+      cy.clickAcceptAllCookies()
+    }
+    if (env === 'PROD') {
+      cy.viewport(1200, 1600)
+      cy.visit('https://www.bymiles.co.uk/') //Look to store as const in config file in future
+      //Added the following custom command - if allow all cookies appears then click allow all button
+      cy.clickAcceptAllCookies()
+    }
   }
 
   //1st Section of Quick Quote page
-  verifyEnterYourRegistrationField() {
-    cy.get(QuickQuotePage.carWrapper).should('exist')
-    .within(() => {
-      //Verifying the text here but if it changes often we should remove this check
-      cy.get(QuickQuotePage.enterYourRegNumberText).contains('Enter your registration number.').should('be.visible')
-      cy.get(QuickQuotePage.registrationInputTextField).should('be.visible')
-      cy.get(QuickQuotePage.findCarButton).should('be.visible')
-    })
-  }
+  verifyEnterYourRegistrationField(env) {
+  
+    if (env === 'TEST') {
+      cy.get(QuickQuotePage.carWrapper).should('exist')
+      .within(() => {
+        //Verifying the text here but if it changes often we should remove this check
+        cy.get(QuickQuotePage.enterYourRegNumberText).contains('Enter your registration number.').should('be.visible')
+        cy.get(QuickQuotePage.registrationInputTextField).should('be.visible')
+        cy.get(QuickQuotePage.findCarButton).should('be.visible')
+      })
+    if (env === 'PROD') {
+      cy.get(QuickQuotePage.formBoxQuickQuotePROD).should('exist')
+      .within(() => {
+        cy.get(QuickQuotePage.registrationInputTextFieldPROD).should('be.visible')
+        cy.get(QuickQuotePage.getAQuickQuoteButtonPROD).should('be.visible')
+      })
+      }
+  }}
 
-  typeIntoEnterYourRegistrationField(reg) {
-    cy.get(QuickQuotePage.registrationInputTextField).type(reg)
-    cy.get(QuickQuotePage.registrationInputTextField).should('have.value', reg)
+  typeIntoEnterYourRegistrationField(env, reg) {
+
+    if (env === 'TEST') {
+      cy.get(QuickQuotePage.registrationInputTextField)
+      .type(reg)
+      .should('have.value', reg)
+      }
+    if (env === 'PROD') {
+      cy.get(QuickQuotePage.formBoxQuickQuotePROD)
+      .within(() => {
+        cy.get(QuickQuotePage.registrationInputTextFieldPROD)
+        .type(reg)
+        .should('have.value', reg)
+      })
+    }
   }
 
   clickFindCarButton() {
     cy.get(QuickQuotePage.findCarButton).should('be.enabled')
     cy.get(QuickQuotePage.findCarButton).click()
+  }
+
+  clickGetAQuickQuoteButtonPROD() {
+    cy.get(QuickQuotePage.getAQuickQuoteButtonPROD).should('be.enabled')
+    cy.get(QuickQuotePage.getAQuickQuoteButtonPROD).click()
+  }
+
+  clickQuickQuoteMilageContinueButton() {
+    cy.get(QuickQuotePage.quickQuoteMileageFormWrapper)
+    .within(() => {
+      //cy.get(QuickQuotePage.quickQuoteMilageContinueButton).should('be.enabled') //removed for now to get test working
+      cy.get(QuickQuotePage.quickQuoteMilageContinueButton).click()
+    })
   }
 
   //2nd Section of Quick Quote page

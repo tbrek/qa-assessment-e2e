@@ -4,9 +4,9 @@ Feature: Quick quote happy flow
   I would like to be able to get a full quote
 
   Scenario: Verify that a customer can get a quick quote via Brochure
-    Given I am on the quick quote page
-    And The user can see the Registration Field is visible
-    Then The user enters a registration into Registration Field "GM15ZNY"
+    Given I am on the quick quote page "TEST"
+    And The user can see the Registration Field is visible "TEST"
+    Then The user enters a registration into Registration Field "TEST" "GM15ZNY"
     Then The user clicks Find My Car button
     #User is now on Car section
     Then The user can see the Car Details within Car Info Container
@@ -27,5 +27,4 @@ Feature: Quick quote happy flow
     Then The user enters a DOB into DOB name field "01" "01" "1989"
     And The user selects an option within Lived Continuously in UK toggle "yes"
     And The user selects an option within children dropdown "0"
-
    

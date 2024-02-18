@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import './GenericCommands'
+import './randomValue'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

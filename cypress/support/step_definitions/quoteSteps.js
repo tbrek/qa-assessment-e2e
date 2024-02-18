@@ -7,21 +7,48 @@ let quickQuotePageDriver = new QuickQuotePageDriver()
 
 // Given steps
 
-//1st Section of Quick Quote Steps
-Given('I am on the quick quote page', () => {
-  quickQuotePage.visitQuickQuotePage()
+//1st Section of Quick Quote Steps - TEST / PROD
+Given('I am on the quick quote page {string}', (env) => {
+  quickQuotePage.visitQuickQuotePage(env)
 })
 
-And('The user can see the Registration Field is visible', () =>{
-  quickQuotePage.verifyEnterYourRegistrationField()
+And('The user can see the Registration Field is visible {string}', (env) =>{
+  quickQuotePage.verifyEnterYourRegistrationField(env)
 })
 
-Then('The user enters a registration into Registration Field {string}', (reg) => {
-  quickQuotePage.typeIntoEnterYourRegistrationField(reg)
+Then('The user enters a registration into Registration Field {string} {string}', (env, reg) => {
+  quickQuotePage.typeIntoEnterYourRegistrationField(env, reg)
 })
 
+//1st Section of Quick Quote Steps - TEST
 Then('The user clicks Find My Car button', () =>{
   quickQuotePage.clickFindCarButton()
+})
+
+//1st Section of Quick Quote Steps - PROD
+Then('The user clicks Get A Quick Quote button', () =>{
+  quickQuotePage.clickGetAQuickQuoteButtonPROD()
+})
+
+Then('The user clicks Yes Continue button within Mileage field', () =>{
+  quickQuotePage.clickQuickQuoteMilageContinueButton()
+})
+
+//2nd Section of Quick Quote Steps - PROD
+Then('The user can see the Fields on the One four to go page are visible', () =>{
+  quickQuotePageDriver.verifyQuickQuoteFormWrapperFields()
+})
+
+Then('The user selects an option within No Claims Discount Dropdown {string}', (option) => {
+  quickQuotePageDriver.selectOptionNoClaimsDiscountDropdown(option)
+})
+
+Then('The user enters a Postcode within Postcode Field {string}', (postcode) => {
+  quickQuotePageDriver.typePostcodeField(postcode)
+})
+
+Then('The user enters a Renewal Month within Car Insurance Renewal Dropdown {string}', (renewalMonth) => {
+  quickQuotePageDriver.selectCarInsuranceRenewDropdown(renewalMonth)
 })
 
 //2nd Section of Quick Quote Steps - Car
