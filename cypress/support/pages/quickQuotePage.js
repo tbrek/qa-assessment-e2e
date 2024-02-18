@@ -18,7 +18,7 @@ class QuickQuotePage {
   static quickQuoteMileageFormWrapper = '[class="formbox formbox--quick-quote-mileage"]'
   static quickQuoteMilageContinueButton = '[datacy="quick-quote-mileage-continue"]'
 
-  //2nd Section Selectors
+  //2nd Section Selectors Car Details
   static carInfoContainer = '[data-cy="car-info-container"]'
   static carModificationsToggle = (option) => `[id="input-has-modifications-toggle-${option}"]` //For reusablity
   static notListedAboveCheckbox = '[id="Not-listed-above"]'

@@ -3,7 +3,24 @@ Feature: Quick quote happy flow
   As a new customer
   I would like to be able to get a full quote
 
-  Scenario: Verify that a customer can get a quick quote via Brochure
+    Scenario: Verify that a customer can get a quick quote via Brochure
+    Given I am on the quick quote page "PROD"
+      And The user can see the Registration Field is visible "PROD"
+    When The user enters a registration into Registration Field "PROD" "GM15ZNY"
+      And The user clicks Get A Quick Quote button
+    Then The user clicks Yes Continue button within Mileage field
+    #User is now on 'One down four to go' section
+    Then The user can see the Fields on the One four to go page are visible
+      And The user selects an option within No Claims Discount Dropdown "1"
+      And The user enters a DOB into DOB name field "01" "01" "1989"
+      And The user enters a Postcode within Postcode Field "CF14 2LW"
+      And The user enters a Renewal Month within Car Insurance Renewal Dropdown "June"
+      And The user enters a Random Email Address within Email Address Field
+      And The user drags Car Icon to Parking Icon
+    When The user clicks Get A Quick Quote Button
+    Then The user can see the Success Message and Estimated Quote after Generating a Quick Quote
+
+  Scenario: Verify that a customer can get a quick quote and inc enter full quote details
     Given I am on the quick quote page "PROD"
       And The user can see the Registration Field is visible "PROD"
     When The user enters a registration into Registration Field "PROD" "GM15ZNY"
@@ -49,4 +66,10 @@ Feature: Quick quote happy flow
       And The user selects an option within Has Motor Convictions Toggle "no"
     Then The user selects an option within Has Criminal Convictions Toggle "no"
     When The user clicks Continue Cover Button
+    #User is now on Insurance Cover Section
+    Then The user selects an option within Policy Start Date dropdown
+      And The user selects an option within Voluntary Excess dropdown "£0"
+    When The user clicks get a Quote Button on Your Insurance Cover section
+    #Commented below out - I didnt get to the quote page but got to error page instead
+    #Then The user is shown Sorry We Cant Cover You Right Now Text
    

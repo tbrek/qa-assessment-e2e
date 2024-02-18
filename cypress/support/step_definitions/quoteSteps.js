@@ -2,11 +2,15 @@ import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import QuickQuotePage from '../pages/quickQuotePage'
 import QuickQuotePageDriver from '../pages/quickQuotePageDriver'
 import QuickQuotePageSuccess from '../pages/quickQuotePageSuccess'
+import QuickQuotePageCover from '../pages/quickQuotePageCover'
+import QuickQuotePageQuote from '../pages/quickQuotePageQuote'
 import { generateRandomValue, generateAlphabeticalRandomValue, generateNumericalRandomValue } from '../randomValue'
 
 let quickQuotePage = new QuickQuotePage()
 let quickQuotePageDriver = new QuickQuotePageDriver()
 let quickQuotePageSuccess = new QuickQuotePageSuccess()
+let quickQuotePageCover = new QuickQuotePageCover()
+let quickQuotePageQuote = new QuickQuotePageQuote()
 
 // Given steps
 
@@ -72,6 +76,11 @@ Then('The user clicks Get A Quick Quote Button', () => {
 
 Then('The user clicks Get This Quick Quote Button', () => {
   quickQuotePageSuccess.clickGetThisQuoteButton()
+})
+
+Then('The user can see the Success Message and Estimated Quote after Generating a Quick Quote', () => {
+  quickQuotePageSuccess.verifySuccessMessage()
+  quickQuotePageSuccess.verifyQuickQuoteSuccessPage()
 })
 
 //3rd Section of Quick Quote Steps - Car
@@ -180,4 +189,21 @@ Then('The user clicks Continue Cover Button', () => {
   quickQuotePageDriver.clickContinueCoverButton()
 })
 
-//
+//4th Section of Quick Quote Steps - Cover
+Then('The user selects an option within Policy Start Date dropdown', () => {
+  quickQuotePageCover.selectPolicyStartDateDropdown()
+})
+
+Then('The user selects an option within Voluntary Excess dropdown {string}', (option) => {
+  quickQuotePageCover.selectVoluntaryExcessDropdown(option)
+})
+
+Then('The user clicks get a Quote Button on Your Insurance Cover section', () => {
+  quickQuotePageCover.clickGetAQuoteButton()
+})
+//5th Section of Quick Quote Steps - Quote
+
+//Verify error message
+Then('The user is shown Sorry We Cant Cover You Right Now Text', () => {
+  quickQuotePageQuote.verfiySorryCantCoverYouText()
+})
