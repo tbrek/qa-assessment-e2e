@@ -1,10 +1,12 @@
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import QuickQuotePage from '../pages/quickQuotePage'
 import QuickQuotePageDriver from '../pages/quickQuotePageDriver'
+import QuickQuotePageSuccess from '../pages/quickQuotePageSuccess'
 import { generateRandomValue, generateAlphabeticalRandomValue, generateNumericalRandomValue } from '../randomValue'
 
 let quickQuotePage = new QuickQuotePage()
 let quickQuotePageDriver = new QuickQuotePageDriver()
+let quickQuotePageSuccess = new QuickQuotePageSuccess()
 
 // Given steps
 
@@ -60,7 +62,19 @@ Then('The user enters a Random Email Address within Email Address Field', () => 
   quickQuotePageDriver.typeRandomEmailAddressField()
 })
 
-//2nd Section of Quick Quote Steps - Car
+Then('The user drags Car Icon to Parking Icon', () => {
+  quickQuotePageDriver.dragCarIconToParkingIcon()
+})
+
+Then('The user clicks Get A Quick Quote Button', () => {
+  quickQuotePageDriver.clickGetAQuickQuoteButton()
+})
+
+Then('The user clicks Get This Quick Quote Button', () => {
+  quickQuotePageSuccess.clickGetThisQuoteButton()
+})
+
+//3rd Section of Quick Quote Steps - Car
 Then('The user can see the Car Details within Car Info Container', () => {
   quickQuotePage.verifyCarInfoContainer()
 })
@@ -101,7 +115,7 @@ Then('The user clicks Continue / Driver button', () => {
   quickQuotePage.clickContinueDriverButton()
 })
 
-//3rd Section of Quick Quote Steps - Driver
+//4th Section of Quick Quote Steps - Driver
 Then('The user selects an option within Title dropdown {string}', (option) => {
   quickQuotePageDriver.selectTitleDropdown(option)
 })
@@ -126,3 +140,44 @@ Then('The user selects an option within children dropdown {string}', (option) =>
   quickQuotePageDriver.selectChildrenDropdown(option)
 })
 
+Then('The user enters a postcode and selects their address {string} {string}', (postcode, address) => {
+  quickQuotePageDriver.enterAddressIntoFindAddressField(postcode, address)
+})
+
+Then('The user enters a Random Email Address within Email Address Driver Details Field', () => {
+  quickQuotePageDriver.typeRandomEmailAddressDriverDetailsField()
+})
+
+Then('The user enters a Random Mobile Number within Mobile Number Field', () => {
+  quickQuotePageDriver.typeRandomMobileNumberIntoMobileField()
+})
+
+Then('The user selects an option within Employment Status dropdown {string}', (option) => {
+  quickQuotePageDriver.selectEmploymentStatusDropdown(option)
+})
+
+Then('The user selects an options Your Driving Section {string} {string} {string}', (kindOfDriving, yearsOfDriving, ncd) => {
+  quickQuotePageDriver.selectYourDrivingDropdown(kindOfDriving, yearsOfDriving, ncd)
+})
+
+Then('The user selects an option within Medical Condition Toggle {string}', (option) => {
+  quickQuotePageDriver.selectMedicalConditionsToggle(option)
+})
+
+Then('The user selects an option within Has Claims Toggle {string}', (option) => {
+  quickQuotePageDriver.selectHasClaimsToggle(option)
+})
+
+Then('The user selects an option within Has Motor Convictions Toggle {string}', (option) => {
+  quickQuotePageDriver.selectHasMotorConvictionsToggle(option)
+})
+
+Then('The user selects an option within Has Criminal Convictions Toggle {string}', (option) => {
+  quickQuotePageDriver.selectHasCriminalConvictionsToggle(option)
+})
+
+Then('The user clicks Continue Cover Button', () => {
+  quickQuotePageDriver.clickContinueCoverButton()
+})
+
+//
