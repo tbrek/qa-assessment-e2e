@@ -14,6 +14,8 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     baseUrl: 'https://quote.test.bymiles.co.uk',
+    //Test to see if this website works as getting 503 with the above
+    //baseUrl: 'https://checkout.test.bymiles.co.uk/details/car',
     specPattern: 'cypress/integration/e2e-tests/**/*.feature',
   },
 })
