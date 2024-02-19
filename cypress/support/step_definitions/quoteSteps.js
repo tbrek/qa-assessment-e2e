@@ -4,7 +4,6 @@ import QuickQuotePageDriver from '../pages/quickQuotePageDriver'
 import QuickQuotePageSuccess from '../pages/quickQuotePageSuccess'
 import QuickQuotePageCover from '../pages/quickQuotePageCover'
 import QuickQuotePageQuote from '../pages/quickQuotePageQuote'
-import { generateRandomValue, generateAlphabeticalRandomValue, generateNumericalRandomValue } from '../randomValue'
 
 let quickQuotePage = new QuickQuotePage()
 let quickQuotePageDriver = new QuickQuotePageDriver()
