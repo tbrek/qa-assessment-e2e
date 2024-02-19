@@ -41,7 +41,7 @@ Then('The user clicks Yes Continue button within Mileage field', () =>{
 })
 
 //2nd Section of Quick Quote Steps - PROD
-Then('The user can see the Fields on the One four to go page are visible', () =>{
+Then('The user can see the Fields on the One down four to go page are visible', () =>{
   quickQuotePageDriver.verifyQuickQuoteFormWrapperFields()
 })
 

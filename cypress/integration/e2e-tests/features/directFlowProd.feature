@@ -10,7 +10,7 @@ Feature: Quick quote happy flow
       And The user clicks Get A Quick Quote button
     Then The user clicks Yes Continue button within Mileage field
     #User is now on 'One down four to go' section
-    Then The user can see the Fields on the One four to go page are visible
+    Then The user can see the Fields on the One down four to go page are visible
       And The user selects an option within No Claims Discount Dropdown "1"
       And The user enters a DOB into DOB name field "01" "01" "1989"
       And The user enters a Postcode within Postcode Field "CF14 2LW"
@@ -27,7 +27,7 @@ Feature: Quick quote happy flow
       And The user clicks Get A Quick Quote button
     Then The user clicks Yes Continue button within Mileage field
     #User is now on 'One down four to go' section
-    Then The user can see the Fields on the One four to go page are visible
+    Then The user can see the Fields on the One down four to go page are visible
       And The user selects an option within No Claims Discount Dropdown "1"
       And The user enters a DOB into DOB name field "01" "01" "1989"
       And The user enters a Postcode within Postcode Field "CF14 2LW"
