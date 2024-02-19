@@ -87,10 +87,6 @@ Then('The user can see the Car Details within Car Info Container', () => {
   quickQuotePage.verifyCarInfoContainer()
 })
 
-Then('The user can see the Car Details within Car Info Container', () => {
-  quickQuotePage.verifyCarInfoContainer()
-})
-
 Then('The user selects an option within Car Modification Toggle {string}', (option) => {
   quickQuotePage.selectCarModificationsToggle(option)
 })
