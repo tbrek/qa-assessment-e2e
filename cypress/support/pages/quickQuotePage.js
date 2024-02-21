@@ -34,18 +34,16 @@ class QuickQuotePage {
   //Actions
   visitQuickQuotePage(env) {
 
+    cy.viewport(1200, 1600)
+
     if (env === 'TEST') {
-      cy.viewport(1200, 1600)
       cy.visit(URL)
-      //Added the following custom command - if allow all cookies appears then click allow all button
-      cy.clickAcceptAllCookies()
     }
     if (env === 'PROD') {
-      cy.viewport(1200, 1600)
       cy.visit('https://www.bymiles.co.uk/') //Look to store as const in config file in future
-      //Added the following custom command - if allow all cookies appears then click allow all button
-      cy.clickAcceptAllCookies()
     }
+    //Added the following custom command - if allow all cookies appears then click allow all button
+    cy.clickAcceptAllCookies()
   }
 
   //1st Section of Quick Quote page
