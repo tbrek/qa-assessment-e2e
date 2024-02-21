@@ -7,6 +7,7 @@ module.exports = defineConfig({
   projectId: 'wxy23f',
   viewportWidth: 1200,
   viewportHeight: 1200,
+  defaultCommandTimeout: 10000,
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.

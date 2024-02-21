@@ -69,7 +69,7 @@ Then('The user drags Car Icon to Parking Icon', () => {
   quickQuotePageDriver.dragCarIconToParkingIcon()
 })
 
-Then('The user clicks Get A Quick Quote Button', () => {
+Then('The user clicks Get A Quick Quote Button after draging Car Icon to Parking Icon', () => {
   quickQuotePageDriver.clickGetAQuickQuoteButton()
 })
 

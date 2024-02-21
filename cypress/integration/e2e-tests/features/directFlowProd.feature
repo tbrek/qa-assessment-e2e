@@ -17,7 +17,7 @@ Feature: Quick quote happy flow
       And The user enters a Renewal Month within Car Insurance Renewal Dropdown "June"
       And The user enters a Random Email Address within Email Address Field
       And The user drags Car Icon to Parking Icon
-    When The user clicks Get A Quick Quote Button
+    When The user clicks Get A Quick Quote Button after draging Car Icon to Parking Icon
     Then The user can see the Success Message and Estimated Quote after Generating a Quick Quote
 
   Scenario: Verify that a customer can get a quick quote and inc enter full quote details
@@ -34,7 +34,7 @@ Feature: Quick quote happy flow
       And The user enters a Renewal Month within Car Insurance Renewal Dropdown "June"
       And The user enters a Random Email Address within Email Address Field
       And The user drags Car Icon to Parking Icon
-    Then The user clicks Get A Quick Quote Button
+    Then The user clicks Get A Quick Quote Button after draging Car Icon to Parking Icon
     #User is now on 'Success! Here's a quick estimate of your price section
     Then The user clicks Get This Quick Quote Button
     #User is now on Enter Car Details Section
